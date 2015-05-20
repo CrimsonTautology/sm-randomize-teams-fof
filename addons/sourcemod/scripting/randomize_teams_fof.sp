@@ -26,6 +26,8 @@ public Plugin:myinfo =
     url = "https://github.com/CrimsonTautology/sm_randomize_teams"
 };
 
+#define MAX_TEAMS 4
+
 public OnPluginStart()
 {
     CreateConVar("sm_randomize_teams_version", PLUGIN_VERSION, PLUGIN_NAME, FCVAR_PLUGIN | FCVAR_SPONLY | FCVAR_REPLICATED | FCVAR_NOTIFY | FCVAR_DONTRECORD);
@@ -35,11 +37,25 @@ public OnPluginStart()
 public Action:Command_RandomizeTeams(client, args)
 {
     RandomizeTeams();
+
     return Plugin_Handled;
 }
 
 RandomizeTeams()
 {
+    new team_slot, rand;
+    new team_slots[] = { 0,2,3,4,5 };
+    for(new team=1; team <= MAX_TEAMS; team++)
+    {
+        rand = GetRandomInt(team, MAX_TEAMS);
+
+        team_slot        = team_slots[rand];
+        team_slots[rand] = team_slots[team];
+        team_slots[team] = team_slot;
+
+        TeamRemap(rand, team_slots[rand]);
+        TeamRemap(team, team_slots[team]);
+    }
 }
 
 //fof_sv_team_remap_[1-4] : reassign a team to team slot 1: 2-vigilantes, 3-desperados, 4-bandidos, 5-rangers
