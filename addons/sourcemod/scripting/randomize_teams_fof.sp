@@ -41,6 +41,7 @@ public Action:Command_RandomizeTeams(client, args)
     return Plugin_Handled;
 }
 
+//Modified Fisher-Yates
 RandomizeTeams()
 {
     new team_slot, rand;
