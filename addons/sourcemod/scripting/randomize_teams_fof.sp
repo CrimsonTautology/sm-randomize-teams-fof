@@ -23,7 +23,7 @@ public Plugin:myinfo =
     author = "CrimsonTautology",
     description = "Randomize the team names for Fistful of Frags",
     version = PLUGIN_VERSION,
-    url = "https://github.com/CrimsonTautology/sm_randomize_teams"
+    url = "https://github.com/CrimsonTautology/sm_randomize_teams_fof"
 };
 
 #define MAX_TEAMS 4
