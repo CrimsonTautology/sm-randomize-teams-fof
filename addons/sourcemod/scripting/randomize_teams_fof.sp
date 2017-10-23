@@ -14,7 +14,7 @@
 
 #include <sourcemod>
 
-#define PLUGIN_VERSION "1.0.0"
+#define PLUGIN_VERSION "1.0.1"
 #define PLUGIN_NAME "[FoF] Randomize Teams"
 
 public Plugin:myinfo =
@@ -30,7 +30,7 @@ public Plugin:myinfo =
 
 public OnPluginStart()
 {
-    CreateConVar("sm_randomize_teams_version", PLUGIN_VERSION, PLUGIN_NAME, FCVAR_PLUGIN | FCVAR_SPONLY | FCVAR_REPLICATED | FCVAR_NOTIFY | FCVAR_DONTRECORD);
+    CreateConVar("sm_randomize_teams_version", PLUGIN_VERSION, PLUGIN_NAME, FCVAR_SPONLY | FCVAR_REPLICATED | FCVAR_NOTIFY | FCVAR_DONTRECORD);
     RegAdminCmd("sm_randomize_teams", Command_RandomizeTeams, ADMFLAG_SLAY, "Randomize the team slots");
 }
 
